@@ -2,6 +2,7 @@ package pl.dev4lazy;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -35,18 +36,40 @@ Lista elementów do pokrycia:
  */
 public class LocatorsTest {
     final String DRIVER_PATH = "C:\\drivers\\chromedriver\\chromedriver.exe";
-    final String APP_URL = "http://przyklady.javastart.pl/jpetstore/actions/Catalog.action";
+    final String APP_URL = "https://przyklady.javastart.pl/jpetstore/actions/Account.action?newAccountForm=";
     private WebDriver driver;
     @BeforeMethod
     public void beforeTest() {
         System.setProperty("webdriver.chrome.driver", DRIVER_PATH);
         driver = new ChromeDriver();
+        driver.navigate().to( APP_URL );
     }
 
     @Test
     public void testLogoIsPresent() {
-        driver.navigate().to( APP_URL );
         assertTrue( driver.findElement( By.id( "LogoContent") ).isDisplayed() );
+    }
+
+    /* Zadanie 5.2
+       Wykorzystując poznane dobre praktyki wybierz lokatory dla poniższych elementów ze strony
+       http://przyklady.javastart.pl/jpetstore/actions/Account.action?newAccountForm=. \
+       Do wyboru i testowania selektorów użyj zakładki Elements z panelu deweloperskiego przeglądarki Chrome.
+
+        Lista elementów do pokrycia:
+            1. Edytowalne pole User ID
+            2. Edytowalne pole New Password
+            3. Edytowalne pole Repeat Password
+            4. Lista wybieralna Language Preferences
+            5. Lista wybieralna Favourite Category
+            6. Przycisk edytowalny typu checkbox Enable MyList
+            7. Przycisk edytowalny typu checkbox Enable MyBanner
+            8. Przycisk Save Account Information
+
+     */
+    @Test
+    public void locators() {
+        WebElement webElement = driver.findElement( By.xpath( "//input[@name='username']") );
+        driver.findElement( By.cssSelector( "input[name='username']"));
     }
 
     @AfterMethod
