@@ -4,11 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pl.dev4lazy.locators.Locator;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 /*
 Stwórz test automatyczny na podstawie poniższego scenariusza testowego:
@@ -35,11 +37,58 @@ public class _7_1_CheckBoxesTests {
 
     @Test
     public void checkboxesTest() {
-        WebElement checkbox1 = driver.findElement( By.xpath( "//[@id='checkboxes']" ) );
-        checkbox1.sendKeys( "Dupa blada...");
-        assertEquals( checkbox1.getAttribute( "value"), "Dupa blada...");
-        checkbox1.clear();
-        assertEquals( checkbox1.getAttribute( "value"), "");
+        WebElement checkbox1 = driver.findElement( By.xpath( "//form[@id='checkboxes']/input[1]" ) );
+        WebElement checkbox2 = driver.findElement( By.xpath( "//form[@id='checkboxes']/input[2]" ) );
+
+        // 2. Sprawdź, że po wejściu na stronę checkbox 1 jest odznaczony, zaś checkbox 2 jest zaznaczony
+        assertFalse( checkbox1.isSelected() );
+        assertTrue( checkbox2.isSelected() );
+
+        // 3. Zaznacz checkbox 1, odznacz checkbox 2
+        checkbox1.click();
+        checkbox2.click();
+
+        // 4. Sprawdź, że checkbox 1 jest zaznaczony, zaś checkbox 2 jest odznaczony
+        assertTrue( checkbox1.isSelected() );
+        assertFalse( checkbox2.isSelected() );
+    }
+
+    @Test
+    public void checkboxesTest2() {
+        WebElement checkbox1 = driver.findElement(
+                By.xpath( new Locator()
+                        .directDescendant()
+                            .withTag( "input")
+                            .first()
+                        .of().anyDescendant()
+                            .withTag( "form ")
+                            .withId( "checkboxes")
+                        .get()
+                )
+        );
+        WebElement checkbox2 = driver.findElement(
+                By.xpath( new Locator()
+                        .directDescendant()
+                            .withTag( "input")
+                            .second()
+                        .of().anyDescendant()
+                            .withTag( "form ")
+                            .withId( "checkboxes")
+                        .get()
+                )
+        );
+
+        // 2. Sprawdź, że po wejściu na stronę checkbox 1 jest odznaczony, zaś checkbox 2 jest zaznaczony
+        assertFalse( checkbox1.isSelected() );
+        assertTrue( checkbox2.isSelected() );
+
+        // 3. Zaznacz checkbox 1, odznacz checkbox 2
+        checkbox1.click();
+        checkbox2.click();
+
+        // 4. Sprawdź, że checkbox 1 jest zaznaczony, zaś checkbox 2 jest odznaczony
+        assertTrue( checkbox1.isSelected() );
+        assertFalse( checkbox2.isSelected() );
     }
 
     @AfterMethod

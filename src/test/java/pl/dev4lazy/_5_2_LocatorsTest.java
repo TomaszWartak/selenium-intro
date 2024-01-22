@@ -7,7 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pl.dev4lazy.locators.Locator;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /*
@@ -34,7 +36,7 @@ Lista elementów do pokrycia:
 	18. Hiperłącze do strony www.mybaits.org.
 
  */
-public class LocatorsTest {
+public class _5_2_LocatorsTest {
     final String DRIVER_PATH = "C:\\drivers\\chromedriver\\chromedriver.exe";
     final String APP_URL = "https://przyklady.javastart.pl/jpetstore/actions/Account.action?newAccountForm=";
     private WebDriver driver;
@@ -64,12 +66,51 @@ public class LocatorsTest {
             6. Przycisk edytowalny typu checkbox Enable MyList
             7. Przycisk edytowalny typu checkbox Enable MyBanner
             8. Przycisk Save Account Information
-
      */
+
     @Test
-    public void locators() {
+    public void locators_Userid() {
         WebElement webElement = driver.findElement( By.xpath( "//input[@name='username']") );
         driver.findElement( By.cssSelector( "input[name='username']"));
+    }
+
+    @Test
+    public void locators_UserId2() {
+        WebElement webElement = driver.findElement(
+                By.xpath(
+                        new Locator()
+                                .anyDescendant()
+                                .withTag("input")
+                                .withAttributeValue( "name", "username" )
+                                .get()
+                )
+        );
+    }
+
+    @Test
+    public void locators_LanguagePreferences() {
+        WebElement webElement = driver.findElement(
+                By.xpath(
+                        new Locator()
+                                .anyDescendant()
+                                    .withTag( "select")
+                                    .withName( "account.languagePreference")
+                                .get()
+                )
+        );
+    }
+
+    @Test
+    public void locators_NewPassword() {
+        WebElement webElement = driver.findElement(
+                By.xpath(
+                        new Locator()
+                                .anyDescendant()
+                                    .withTag( "input")
+                                    .withName( "password")
+                                .get()
+                )
+        );
     }
 
     @AfterMethod
@@ -77,4 +118,5 @@ public class LocatorsTest {
         driver.close();
         driver.quit();
     }
+
 }

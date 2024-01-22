@@ -15,7 +15,7 @@ Metody testowe mają za zadanie przetestować działanie metody add(). Lista prz
 	3. Dodawanie dwóch liczb całkowitych z wykorzystaniem metody assertEquals()
 
  */
-public class CalculatorTest {
+public class _6_1_CalculatorTest {
     private Calculator calculator;
     @BeforeMethod
     public void prepareCalculator() {
