@@ -84,7 +84,7 @@ public class LocatorTest {
     }
 
     @Test void withInnerTextEqualTo() {
-        assertEquals( locator.withInnerTextEqualTo("xxx").get(), "[text()='xxx']");
+        assertEquals( locator.withInnerText("xxx").get(), "[text()='xxx']");
     }
 
 

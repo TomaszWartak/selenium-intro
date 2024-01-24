@@ -54,7 +54,7 @@ public class _8_1_ExplicitWaitTests {
                 By.xpath(
                         new Locator()
                                 .anyDescendant()
-                                    .withInnerTextEqualTo("Remove")
+                                    .withInnerText("Remove")
                                 .get()
                 )
         );

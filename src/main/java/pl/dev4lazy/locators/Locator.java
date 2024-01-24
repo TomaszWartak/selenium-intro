@@ -1,5 +1,17 @@
 package pl.dev4lazy.locators;
 
+/**
+ * Using:
+ *         String locator = new Locator()
+ *                 .anyDescendant()
+ *                     .withTag( "img")
+ *                 .of().directDescendant()
+ *                     .withId( "accept_button" )
+ *                 .of().root()
+ *                     .withTag("input")
+ *                     .withId("echo")
+ *                 .get();
+ */
 public class Locator {
 
     /*
@@ -10,17 +22,48 @@ public class Locator {
     private String body ="";
     private String segment = "";
 
+    /* Selecting by a specific tag ------------------------------------------------*/
+    /**
+     * Uwaga: zwracają locatory dla potomka dowolnego poziomu
+     * @return
+     */
+
+
+    public Locator a(){
+        return anyDescendant().withTag( "a" );
+    }
+
+    public Locator button(){
+        return anyDescendant().withTag( "button" );
+    }
+
+    public Locator h4(){
+        return anyDescendant().withTag( "h4" );
+    }
+
+    public Locator input(){
+        return anyDescendant().withTag( "input" );
+    }
+
+    public Locator li(){
+        return anyDescendant().withTag( "li" );
+    }
+
+
+    /* Indicates the parent level ------------------------------------------------*/
     public Locator of() {
         body = segment+body;
         segment = "";
         return this;
     }
 
+    /* Selecting root  ----------------------------------------------------------*/
     public Locator root() {
         segment = "/";
         return this;
     }
 
+    /* Selecting by descendant kind ----------------------------------------------*/
     public Locator anyDescendant() {
         segment = segment+"//*";
         return this;
@@ -31,6 +74,7 @@ public class Locator {
         return this;
     }
 
+    /* Selecting by tag ----------------------------------------------------------*/
     public Locator withTag( String tagName ) {
         if ( getLastCharAsString(segment).equals("*") ) {
             segment = getTextWithoutLastChar( segment );
@@ -51,6 +95,7 @@ public class Locator {
         return text.substring(0, text.length() - 1);
     }
 
+    /* Selecting by attributes --------------------------------------------------*/
     public Locator withId( String idName ) {
         segment = withAttributeValue( "id", idName ).get();
         return this;
@@ -76,7 +121,7 @@ public class Locator {
         return this;
     }
 
-    public Locator withInnerTextEqualTo( String innerText ) {
+    public Locator withInnerText(String innerText ) {
         segment = segment+"[text()='"+innerText+"']";
         return this;
     }
@@ -86,6 +131,7 @@ public class Locator {
         return this;
     }
 
+    /* Selecting order ------------------------------------------------------------*/
     public Locator first() {
         segment = nth(1 ).get();
         return this;
@@ -107,6 +153,7 @@ public class Locator {
         return this;
     }
 
+    /* Creating a locator text ---------------------------------------------------*/
     public String get() {
         String locatorBody = segment+body;
         body = "";
