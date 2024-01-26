@@ -37,7 +37,6 @@ public class FailedLoginTests {
         driver.navigate().to( APP_URL );
     }
 
-    Zrób drugi test, ale wg kodu z JavaStart
     @Test
     public void test() {
 //        Kliknij w link Sign In
@@ -77,6 +76,7 @@ public class FailedLoginTests {
         );
 
     }
+
 
     @AfterMethod
     public void afterTest() {

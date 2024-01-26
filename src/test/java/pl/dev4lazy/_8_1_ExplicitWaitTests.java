@@ -34,12 +34,13 @@ Inne wymagania:
 
 public class _8_1_ExplicitWaitTests {
 
-    final String DRIVER_PATH = "C:\\drivers\\chromedriver\\chromedriver.exe";
+    final String WIN_DRIVER_PATH = "C:\\drivers\\chromedriver\\chromedriver.exe";
+    final String MAC_DRIVER_PATH = ";";
     final String APP_URL = "https://theinternet.przyklady.javastart.pl/dynamic_controls";
     private WebDriver driver;
     @BeforeMethod
     public void beforeTest() {
-        System.setProperty("webdriver.chrome.driver", DRIVER_PATH );
+        System.setProperty("webdriver.chrome.driver", WIN_DRIVER_PATH);
         driver = new ChromeDriver();
         driver.navigate().to( APP_URL );
     }
