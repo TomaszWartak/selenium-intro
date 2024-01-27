@@ -11,6 +11,8 @@ import pl.dev4lazy.locators.Locator;
 
 import java.time.Duration;
 
+import static org.testng.Assert.assertTrue;
+
 /*
 Wejdź na stronę http://przyklady.javastart.pl/jpetstore/
 Kliknij w link Sign In
@@ -22,6 +24,7 @@ public class FailedLoginTests3 {
     final String MAC_DRIVER_PATH = "/usr/local/bin/chromedriver";
     final String APP_URL = "http://przyklady.javastart.pl/jpetstore/";
     private WebDriver driver;
+
     @BeforeMethod
     public void beforeTest() {
         String driverPath = MAC_DRIVER_PATH;
@@ -35,15 +38,44 @@ public class FailedLoginTests3 {
     }
 
     @Test
-    public void test() {
+    public void asUserTryToLoginWithIncorrectLoginAndPassword() {
 //        Kliknij w link Enter the Store
-        enterTheStoreClick();
+        clickEnterTheStoreLink();
 //        Kliknij w link Sign In
-        signInClick();
+        clickSignInLink();
 //        Na stronie logowania podając nieprawidłowy login i hasło spróbuj się zalogować
         processIncorrectLoginAndPassword();
 //        Test powinien skończyć się sprawdzeniem czy komunikat „Invalid username or password. Signon failed.” został wyświetlony.
         checkSignonFailedMessage();
+    }
+
+    private void clickEnterTheStoreLink() {
+        WebElement enterTheStoreLink = driver.findElement(
+                By.xpath( new Locator().a().withInnerText("Enter the Store").get() )
+        );
+        enterTheStoreLink.click();
+    }
+
+    private void clickSignInLink() {
+        WebElement signInLink = driver.findElement(
+                By.xpath( new Locator().a().withInnerText("Sign In").get() )
+        );
+        signInLink.click();
+    }
+
+    private void processIncorrectLoginAndPassword() {
+        processLoginAndPassword("chuj", "chujp");
+    }
+
+    private void processLoginAndPassword(String login, String password) {
+        WebElement userNameInput = driver.findElement(By.name("username"));
+        WebElement passwordInput = driver.findElement(By.name("password"));
+        WebElement signOnInput = driver.findElement(By.name("signon"));
+        userNameInput.clear();
+        userNameInput.sendKeys(login);
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
+        signOnInput.click();
     }
 
     private void checkSignonFailedMessage() {
@@ -52,35 +84,26 @@ public class FailedLoginTests3 {
         );
     }
 
-    private void processIncorrectLoginAndPassword() {
-        WebElement userNameInput = driver.findElement(
-                By.xpath( new Locator().input().withName("username").get() )
-        );
-        WebElement passwordInput = driver.findElement(
-                By.xpath( new Locator().input().withName("password").get() )
-        );
-        WebElement signOnInput = driver.findElement(
-                By.xpath( new Locator().input().withName("signon").get() )
-        );
-        userNameInput.sendKeys( "chuj");
-        passwordInput.sendKeys( "chujp");
-        signOnInput.click();
+    @Test
+    public void asUserLoginUsingValidLoginAndPassword(){
+
+        clickEnterTheStoreLink();
+
+        clickSignInLink();
+
+        processCorrectLoginAndPassword();
+
+        checkBannerAfterLoginLoginIsDisplayed();
     }
 
-    private void signInClick() {
-        WebElement signInLink = driver.findElement(
-                By.xpath( new Locator().a().withInnerText("Sign In").get() )
-        );
-        signInLink.click();
+    private void checkBannerAfterLoginLoginIsDisplayed() {
+        WebElement bannerAfterLoginLogo=driver.findElement( By.id("Banner"));
+        assertTrue(bannerAfterLoginLogo.isDisplayed());
     }
 
-    private void enterTheStoreClick() {
-        WebElement enterTheStoreLink = driver.findElement(
-                By.xpath( new Locator().a().withInnerText("Enter the Store").get() )
-        );
-        enterTheStoreLink.click();
+    private void processCorrectLoginAndPassword() {
+        processLoginAndPassword("j2ee", "j2ee");
     }
-
 
     @AfterMethod
     public void afterTest() {

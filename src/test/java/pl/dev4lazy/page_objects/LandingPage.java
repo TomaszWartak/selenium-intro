@@ -1,0 +1,22 @@
+package pl.dev4lazy.page_objects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LandingPage {
+    private WebDriver driver;
+
+    @FindBy(linkText = "Enter the Store")
+    private WebElement enterTheStoreLink;
+
+    public LandingPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public void clickEnterTheStoreLink() {
+        enterTheStoreLink.click();
+    }
+}

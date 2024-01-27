@@ -49,6 +49,10 @@ public class Locator {
         return anyDescendant().withTag( "li" );
     }
 
+    public Locator ul(){
+        return anyDescendant().withTag( "ui" );
+    }
+
 
     /* Indicates the parent level ------------------------------------------------*/
     public Locator of() {
