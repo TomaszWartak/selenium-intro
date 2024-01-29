@@ -4,13 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pl.dev4lazy.driver_manager.DriverManager;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LoginPage {
-
-    private WebDriver driver;
 
     @FindBy( name = "username")
     private WebElement userNameInput;
@@ -18,14 +17,11 @@ public class LoginPage {
     private WebElement passwordInput;
     @FindBy( name = "signon")
     private WebElement signOnInput;
-    @FindBy( id = "Banner")
-    private WebElement bannerAfterLoginLogo;
     @FindBy( xpath = "//ul[@class='messages']/li")
     private List<WebElement> messagesLi;
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public LoginPage() {
+        PageFactory.initElements( DriverManager.getWebDriver(), this);
     }
 
     public void processLoginAndPassword(String login, String password) {
@@ -48,17 +44,12 @@ public class LoginPage {
         signOnInput.click();
     }
 
-    public boolean isSignOnFailedMessageDisplayed( String signOnFailedMessage) {
+    public boolean isFailedMessageDisplayed(String failedMessage) {
         return !messagesLi.stream()
-                .filter( li -> li.getText().equals( signOnFailedMessage ) )
+                .filter( li -> li.getText().equals( failedMessage ) )
                 .map( li -> li.isDisplayed() )
                 .collect(Collectors.toList())
                 .isEmpty();
     }
-
-    public boolean isBannerAfterLoginDisplayed() {
-        return bannerAfterLoginLogo.isDisplayed();
-    }
-
 
 }

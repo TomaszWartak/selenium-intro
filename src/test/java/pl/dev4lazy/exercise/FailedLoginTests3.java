@@ -1,4 +1,4 @@
-package pl.dev4lazy;
+package pl.dev4lazy.exercise;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -51,14 +51,14 @@ public class FailedLoginTests3 {
 
     private void clickEnterTheStoreLink() {
         WebElement enterTheStoreLink = driver.findElement(
-                By.xpath( new Locator().a().withInnerText("Enter the Store").get() )
+                By.xpath( new Locator().anyA().withInnerText("Enter the Store").get() )
         );
         enterTheStoreLink.click();
     }
 
     private void clickSignInLink() {
         WebElement signInLink = driver.findElement(
-                By.xpath( new Locator().a().withInnerText("Sign In").get() )
+                By.xpath( new Locator().anyA().withInnerText("Sign In").get() )
         );
         signInLink.click();
     }
@@ -80,7 +80,7 @@ public class FailedLoginTests3 {
 
     private void checkSignonFailedMessage() {
         WebElement messageLi = driver.findElement(
-                By.xpath( new Locator().li().withInnerText("Invalid username or password.  Signon failed.").get() )
+                By.xpath( new Locator().anyLi().withInnerText("Invalid username or password.  Signon failed.").get() )
         );
     }
 

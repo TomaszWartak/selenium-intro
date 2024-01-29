@@ -1,12 +1,10 @@
-package pl.dev4lazy;
+package pl.dev4lazy.exercise;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
@@ -43,13 +41,13 @@ public class FailedLoginTests {
     public void test() {
 //        Kliknij w link Sign In
         WebElement enterTheStoreLink = driver.findElement(
-                By.xpath( new Locator().a().withInnerText("Enter the Store").get() )
+                By.xpath( new Locator().anyA().withInnerText("Enter the Store").get() )
         );
         enterTheStoreLink.click();
         Wait<WebDriver> signInLinkWait = new WebDriverWait(driver, Duration.ofSeconds(5) );
         WebElement signInLink = signInLinkWait.until(
                 ExpectedConditions.presenceOfElementLocated(
-                        By.xpath( new Locator().a().withInnerText("Sign In").get() )
+                        By.xpath( new Locator().anyA().withInnerText("Sign In").get() )
                 )
         );
         signInLink.click();
@@ -57,14 +55,14 @@ public class FailedLoginTests {
         Wait<WebDriver> userNameInputWait = new WebDriverWait(driver, Duration.ofSeconds(5) );
         WebElement userNameInput = userNameInputWait.until(
                 ExpectedConditions.presenceOfElementLocated(
-                        By.xpath( new Locator().input().withName("username").get() )
+                        By.xpath( new Locator().anyInput().withName("username").get() )
                 )
         );
         WebElement passwordInput = driver.findElement(
-                By.xpath( new Locator().input().withName("password").get() )
+                By.xpath( new Locator().anyInput().withName("password").get() )
         );
         WebElement signOnInput = driver.findElement(
-                By.xpath( new Locator().input().withName("signon").get() )
+                By.xpath( new Locator().anyInput().withName("signon").get() )
         );
         userNameInput.sendKeys( "chuj");
         passwordInput.sendKeys( "chujp");
@@ -73,7 +71,7 @@ public class FailedLoginTests {
         Wait<WebDriver> messageLiWait = new WebDriverWait(driver, Duration.ofSeconds(5) );
         WebElement messageLi = messageLiWait.until(
                 ExpectedConditions.presenceOfElementLocated(
-                        By.xpath( new Locator().li().withInnerText("Invalid username or password.  Signon failed.").get() )
+                        By.xpath( new Locator().anyLi().withInnerText("Invalid username or password.  Signon failed.").get() )
                 )
         );
 

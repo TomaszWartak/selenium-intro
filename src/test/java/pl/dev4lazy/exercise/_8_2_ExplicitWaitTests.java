@@ -1,4 +1,4 @@
-package pl.dev4lazy;
+package pl.dev4lazy.exercise;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -51,7 +51,7 @@ public class _8_2_ExplicitWaitTests {
 
 //        3. Naciśnij na przycisk Remove
         WebElement removeButton = driver.findElement(
-                By.xpath( new Locator().button().withInnerText("Remove").get() )
+                By.xpath( new Locator().anyButton().withInnerText("Remove").get() )
         );
         removeButton.click();
 
@@ -62,7 +62,7 @@ public class _8_2_ExplicitWaitTests {
 
 //        5. Naciśnij na przycisk Add
         WebElement addButton = driver.findElement(
-                By.xpath( new Locator().button().withInnerText("Add").get() )
+                By.xpath( new Locator().anyButton().withInnerText("Add").get() )
         );
         addButton.click();
 
@@ -81,7 +81,7 @@ public class _8_2_ExplicitWaitTests {
 
 //        3. Naciśnij na przycisk Remove
         WebElement removeButton = driver.findElement(
-                By.xpath( new Locator().button().withInnerText("Remove").get() )
+                By.xpath( new Locator().anyButton().withInnerText("Remove").get() )
         );
         removeButton.click();
 
@@ -95,7 +95,7 @@ public class _8_2_ExplicitWaitTests {
 
 //        5. Naciśnij na przycisk Add
         WebElement addButton = driver.findElement(
-                By.xpath( new Locator().button().withInnerText("Add").get() )
+                By.xpath( new Locator().anyButton().withInnerText("Add").get() )
         );
         addButton.click();
 

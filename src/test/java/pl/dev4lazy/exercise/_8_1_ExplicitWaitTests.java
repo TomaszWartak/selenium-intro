@@ -1,4 +1,4 @@
-package pl.dev4lazy;
+package pl.dev4lazy.exercise;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

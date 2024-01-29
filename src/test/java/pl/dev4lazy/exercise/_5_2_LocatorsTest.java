@@ -1,4 +1,4 @@
-package pl.dev4lazy;
+package pl.dev4lazy.exercise;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +13,8 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /*
-Stwórz lokatory XPath oraz CSS dla poniższych elementów ze strony http://przyklady.javastart.pl/jpetstore/actions/Catalog.action. 
+Stwórz lokatory XPath oraz CSS dla poniższych elementów ze strony
+http://przyklady.javastart.pl/jpetstore/actions/Catalog.action.
 Do tworzenia i testowania selektorów użyj zakładki Elements z panelu deweloperskiego przeglądarki Chrome.
 Lista elementów do pokrycia:
 	1. Logo w lewym górnym rogu strony głównej,
@@ -37,12 +38,16 @@ Lista elementów do pokrycia:
 
  */
 public class _5_2_LocatorsTest {
-    final String DRIVER_PATH = "C:\\drivers\\chromedriver\\chromedriver.exe";
-    final String APP_URL = "https://przyklady.javastart.pl/jpetstore/actions/Account.action?newAccountForm=";
-    private WebDriver driver;
+    final String WIN_DRIVER_PATH = "C:\\drivers\\chromedriver\\chromedriver.exe";
+    final String MAC_DRIVER_PATH = "/usr/local/bin/chromedriver";
+    final String APP_URL = "http://przyklady.javastart.pl/jpetstore/actions/Catalog.action";
+    public WebDriver driver;
+
     @BeforeMethod
     public void beforeTest() {
-        System.setProperty("webdriver.chrome.driver", DRIVER_PATH);
+        String driverPath = MAC_DRIVER_PATH;
+//      String driverPath = WIN_DRIVER_PATH;
+        System.setProperty("webdriver.chrome.driver", driverPath );
         driver = new ChromeDriver();
         driver.navigate().to( APP_URL );
     }
@@ -80,8 +85,8 @@ public class _5_2_LocatorsTest {
                 By.xpath(
                         new Locator()
                                 .anyDescendant()
-                                .withTag("input")
-                                .withAttributeValue( "name", "username" )
+                                    .withTag("input")
+                                    .withAttributeValue( "name", "username" )
                                 .get()
                 )
         );

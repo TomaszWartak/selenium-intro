@@ -6,16 +6,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
 
-public class LandingPage {
+public class FishCatalogPage {
 
-    @FindBy(linkText = "Enter the Store")
-    private WebElement enterTheStoreLink;
+    @FindBy( linkText="FI-SW-01")
+    WebElement angelFishIdLink;
 
-    public LandingPage() {
+    public FishCatalogPage() {
         PageFactory.initElements( DriverManager.getWebDriver(), this);
     }
 
-    public void clickEnterTheStoreLink() {
-        enterTheStoreLink.click();
+    public void clickAngelFishIdLink() {
+        angelFishIdLink.click();
     }
 }

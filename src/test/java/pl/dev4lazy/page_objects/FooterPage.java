@@ -6,16 +6,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
 
-public class LandingPage {
+public class FooterPage {
 
-    @FindBy(linkText = "Enter the Store")
-    private WebElement enterTheStoreLink;
+    @FindBy( id = "Banner")
+    private WebElement bannerAfterLoginLogo;
 
-    public LandingPage() {
+    public FooterPage() {
         PageFactory.initElements( DriverManager.getWebDriver(), this);
     }
 
-    public void clickEnterTheStoreLink() {
-        enterTheStoreLink.click();
+    public boolean isBannerAfterLoginDisplayed() {
+        return bannerAfterLoginLogo.isDisplayed();
     }
+
 }

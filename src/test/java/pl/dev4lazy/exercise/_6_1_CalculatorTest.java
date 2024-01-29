@@ -1,7 +1,8 @@
-package pl.dev4lazy;
+package pl.dev4lazy.exercise;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pl.dev4lazy.Calculator;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;

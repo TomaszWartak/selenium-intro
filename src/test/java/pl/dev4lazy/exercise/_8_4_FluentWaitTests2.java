@@ -1,4 +1,4 @@
-package pl.dev4lazy;
+package pl.dev4lazy.exercise;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -47,7 +47,7 @@ public class _8_4_FluentWaitTests2 {
     public void fluentWaitTest() {
 //   2. Naciśnij na przycisk Start
         WebElement startButton = driver.findElement(
-                By.xpath( new Locator().button().withInnerText("Start").get() )
+                By.xpath( new Locator().anyButton().withInnerText("Start").get() )
         );
         startButton.click();
 

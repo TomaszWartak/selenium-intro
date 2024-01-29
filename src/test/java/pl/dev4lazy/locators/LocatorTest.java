@@ -15,6 +15,10 @@ public class LocatorTest {
     }
 
     @Test
+    public void systemCheck() {
+        String osName = System.getProperty("os.name");
+    }
+    @Test
     public void of() {
         assertEquals( locator.of().get(), ""  );
         assertEquals(
