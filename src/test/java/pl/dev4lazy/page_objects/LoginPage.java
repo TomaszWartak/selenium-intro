@@ -1,10 +1,10 @@
 package pl.dev4lazy.page_objects;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
+import pl.dev4lazy.waits.Waiter;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,20 +31,24 @@ public class LoginPage {
     }
 
     public void typeInLoginInput( String login ) {
+        Waiter.untilElementIsVisible( userNameInput );
         userNameInput.clear();
         userNameInput.sendKeys(login);
     }
 
     public void typeInPasswordInput( String password ) {
+        Waiter.untilElementIsVisible( passwordInput );
         passwordInput.clear();
         passwordInput.sendKeys(password);
     }
 
     public void clickSignOnInput() {
+        Waiter.untilElementIsClickable( signOnInput );
         signOnInput.click();
     }
 
     public boolean isFailedMessageDisplayed(String failedMessage) {
+        Waiter.untilElementsAreVisible( messagesLi );
         return !messagesLi.stream()
                 .filter( li -> li.getText().equals( failedMessage ) )
                 .map( li -> li.isDisplayed() )
