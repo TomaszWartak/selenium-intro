@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
 import pl.dev4lazy.waits.Waiter;
 
-public class FooterPage {
+public class FooterPage extends PageBase {
 
     @FindBy( id = "Banner")
     private WebElement bannerAfterLoginLogo;
@@ -17,6 +17,7 @@ public class FooterPage {
 
     public boolean isBannerAfterLoginDisplayed() {
         Waiter.untilElementIsVisible( bannerAfterLoginLogo );
+        logger.info("isBannerAfterLoginDisplayed");
         return bannerAfterLoginLogo.isDisplayed();
     }
 

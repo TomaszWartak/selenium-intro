@@ -6,10 +6,10 @@ import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
 import pl.dev4lazy.waits.Waiter;
 
-public class AngelFishCatalogPage {
+public class AngelFishCatalogPage extends PageBase {
 
     @FindBy( xpath="//a[contains(@href, 'ItemId=EST-2')]")
-    WebElement smallAngelFishAddToCartLink;
+    private WebElement smallAngelFishAddToCartLink;
 
     public AngelFishCatalogPage() {
         PageFactory.initElements( DriverManager.getWebDriver(), this);
@@ -18,5 +18,6 @@ public class AngelFishCatalogPage {
     public void clickSmallAngelFishAddToCartLink() {
         Waiter.untilElementIsClickable( smallAngelFishAddToCartLink );
         smallAngelFishAddToCartLink.click();
+        logger.info("clickSmallAngelFishAddToCartLink");
     }
 }

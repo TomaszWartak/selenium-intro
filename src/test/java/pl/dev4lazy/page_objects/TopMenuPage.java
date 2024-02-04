@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
 import pl.dev4lazy.waits.Waiter;
 
-public class TopMenuPage {
+public class TopMenuPage extends PageBase {
 
     @FindBy( linkText = "Sign In")
     WebElement signInLink;
@@ -20,10 +20,12 @@ public class TopMenuPage {
     public void clickSignInLink() {
         Waiter.untilElementIsClickable( signInLink );
         signInLink.click();
+        logger.info("clickSignInLink");
     }
 
     public void clickFishLink() {
         Waiter.untilElementIsClickable( fishLink );
         fishLink.click();
+        logger.info("clickFishLink");
     }
 }

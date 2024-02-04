@@ -1,7 +1,5 @@
 package pl.dev4lazy.driver_manager;
 
-import java.time.Duration;
-
 public class DriverUtils {
 
     public static void setInitialConfiguration() {

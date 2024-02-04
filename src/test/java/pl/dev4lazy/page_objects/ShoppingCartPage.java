@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
 import pl.dev4lazy.waits.Waiter;
 
-public class ShoppingCartPage {
+public class ShoppingCartPage extends PageBase {
 
     @FindBy(linkText = "Proceed to Checkout")
     WebElement proceedToCheckoutLink;
@@ -18,6 +18,7 @@ public class ShoppingCartPage {
     public void clickProceedToCheckoutLink() {
         Waiter.untilElementIsClickable( proceedToCheckoutLink );
         proceedToCheckoutLink.click();
+        logger.info("clickProceedToCheckoutLink");
     }
 
 }

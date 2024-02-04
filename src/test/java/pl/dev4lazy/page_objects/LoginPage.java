@@ -9,7 +9,7 @@ import pl.dev4lazy.waits.Waiter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LoginPage {
+public class LoginPage extends PageBase {
 
     @FindBy( name = "username")
     private WebElement userNameInput;
@@ -34,21 +34,25 @@ public class LoginPage {
         Waiter.untilElementIsVisible( userNameInput );
         userNameInput.clear();
         userNameInput.sendKeys(login);
+        logger.info("typeInLoginInput");
     }
 
     public void typeInPasswordInput( String password ) {
         Waiter.untilElementIsVisible( passwordInput );
         passwordInput.clear();
         passwordInput.sendKeys(password);
+        logger.info("typeInPasswordInput");
     }
 
     public void clickSignOnInput() {
         Waiter.untilElementIsClickable( signOnInput );
         signOnInput.click();
+        logger.info("clickSignOnInput");
     }
 
     public boolean isFailedMessageDisplayed(String failedMessage) {
         Waiter.untilElementsAreVisible( messagesLi );
+        logger.info("isFailedMessageDisplayed");
         return !messagesLi.stream()
                 .filter( li -> li.getText().equals( failedMessage ) )
                 .map( li -> li.isDisplayed() )

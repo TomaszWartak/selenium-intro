@@ -6,10 +6,10 @@ import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
 import pl.dev4lazy.waits.Waiter;
 
-public class FishCatalogPage {
+public class FishCatalogPage extends PageBase {
 
     @FindBy( linkText="FI-SW-01")
-    WebElement angelFishIdLink;
+    private WebElement angelFishIdLink;
 
     public FishCatalogPage() {
         PageFactory.initElements( DriverManager.getWebDriver(), this);
@@ -18,5 +18,6 @@ public class FishCatalogPage {
     public void clickAngelFishIdLink() {
         Waiter.untilElementIsClickable( angelFishIdLink );
         angelFishIdLink.click();
+        logger.info("clickAngelFishIdLink");
     }
 }
