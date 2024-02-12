@@ -1,4 +1,4 @@
-package pl.dev4lazy.tests;
+package pl.dev4lazy.locator_tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

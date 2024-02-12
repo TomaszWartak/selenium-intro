@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
+import pl.dev4lazy.navigation.ApplicationURLs;
 import pl.dev4lazy.waits.Waiter;
 
 public class FishCatalogPage extends PageBase {
@@ -13,6 +14,7 @@ public class FishCatalogPage extends PageBase {
 
     public FishCatalogPage() {
         PageFactory.initElements( DriverManager.getWebDriver(), this);
+        pageUrl = ApplicationURLs.FISH_CATEGORY_URL;
     }
 
     public void clickAngelFishIdLink() {

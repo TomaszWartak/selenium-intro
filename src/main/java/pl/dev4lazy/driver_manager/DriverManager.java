@@ -20,9 +20,7 @@ public class DriverManager {
         return driver;
     }
 
-    public static void initWebDriver(
-            String driverPath,
-            WebDriverExtender webDriverExtender ) {
+    public static void initWebDriver( String driverPath, WebDriverExtender webDriverExtender ) {
         if (driver == null) {
             System.setProperty( webDriverExtender.getDriverName(), driverPath );
             driver = webDriverExtender;

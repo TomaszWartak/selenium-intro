@@ -2,38 +2,28 @@ package pl.dev4lazy.tests;
 
 import org.testng.annotations.Test;
 import pl.dev4lazy.page_objects.FooterPage;
-import pl.dev4lazy.page_objects.LandingPage;
 import pl.dev4lazy.page_objects.LoginPage;
-import pl.dev4lazy.page_objects.TopMenuPage;
+import pl.dev4lazy.tests.TestsBase;
 
 import static org.testng.Assert.assertTrue;
 
-/*
-Wejdź na stronę http://przyklady.javastart.pl/jpetstore/
-Kliknij w link Sign In
-Na stronie logowania podając nieprawidłowy login i hasło spróbuj się zalogować
-Test powinien skończyć się sprawdzeniem czy komunikat „Invalid username or password. Signon failed.” został wyświetlony.
- */
 public class CorrectLoginTests extends TestsBase {
+
+    private final String CORRECT_LOGIN = "j2ee";
+    private final String CORRECT_PASSWORD = "j2ee";
 
     @Test
     public void asUserLoginUsingValidLoginAndPassword(){
+/*
+        new LandingPage().clickEnterTheStoreLink();
 
-        LandingPage landingPage = new LandingPage();
-        landingPage.clickEnterTheStoreLink();
-
-        TopMenuPage topMenuPage = new TopMenuPage();
-        topMenuPage.clickSignInLink();
+        new TopMenuPage().clickSignInLink();*/
 
         LoginPage loginPage = new LoginPage();
-        processCorrectLoginAndPassword( loginPage );
+        loginPage.navigateTo();
+        loginPage.processLoginAndPassword( CORRECT_LOGIN, CORRECT_PASSWORD );
 
-        FooterPage footerPage = new FooterPage();
-
-        assertTrue(footerPage.isBannerAfterLoginDisplayed());
-    }
-    private void processCorrectLoginAndPassword( LoginPage loginPage ) {
-        loginPage.processLoginAndPassword("j2ee", "j2ee");
+        assertTrue( new FooterPage().isBannerAfterLoginDisplayed() );
     }
 
 }

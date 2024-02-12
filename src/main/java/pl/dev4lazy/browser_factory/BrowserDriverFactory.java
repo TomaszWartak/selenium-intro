@@ -6,7 +6,7 @@ import pl.dev4lazy.web_drivers.ChromeWebDriver;
 import pl.dev4lazy.web_drivers.FirefoxWebDriver;
 import pl.dev4lazy.web_drivers.SafariWebDriver;
 
-public class BrowserFactory{
+public class BrowserDriverFactory {
 
     public static void setBrowserDriver(BrowserType browserType) {
         switch (browserType) {

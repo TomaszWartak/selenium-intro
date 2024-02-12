@@ -9,12 +9,13 @@ public class AppConfig{
     static final String MAC_CHROME_DRIVER_PATH = "/usr/local/bin/chromedriver";
     static final String WIN_FIREFOX_DRIVER_PATH = "C:\\drivers\\geckodriver.exe";
     static final String MAC_FIREFOX_DRIVER_PATH = "/usr/local/bin/geckodriver";
+    static final String MAC_SAFARI_DRIVER_PATH = "/usr/bin/safaridriver";
 
     private static AppConfig instance;
 
     private static String chromeDriverPath = "";
     private static String fireFoxDriverPath = "";
-    private static String safariDriverPath ="";
+    private static String safariDriverPath = "";
 
     private AppConfig() {
         // todo w loadFromFole powinno nastąpić wczytanie ścieżek do driverów...
@@ -23,6 +24,7 @@ public class AppConfig{
 
         chromeDriverPath = getDriverPath( BrowserType.CHROME );
         fireFoxDriverPath = getDriverPath( BrowserType.FIREFOX );
+        safariDriverPath = getDriverPath( BrowserType.SAFARI );
     }
 
     public static AppConfig getInstance() {
@@ -40,6 +42,8 @@ public class AppConfig{
                         return MAC_CHROME_DRIVER_PATH;
                     case FIREFOX:
                         return MAC_FIREFOX_DRIVER_PATH;
+                    case SAFARI:
+                        return MAC_SAFARI_DRIVER_PATH;
                     default: {
                         throw new IllegalStateException("Unsupported browser: "+browserType.name() );
                     }

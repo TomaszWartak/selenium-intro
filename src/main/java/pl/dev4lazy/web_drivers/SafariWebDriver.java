@@ -1,9 +1,6 @@
 package pl.dev4lazy.web_drivers;
 
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
-import java.sql.Driver;
 
 public class SafariWebDriver extends SafariDriver implements WebDriverExtender {
 

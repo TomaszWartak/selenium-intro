@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
+import pl.dev4lazy.navigation.ApplicationURLs;
 import pl.dev4lazy.waits.Waiter;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class LoginPage extends PageBase {
 
     public LoginPage() {
         PageFactory.initElements( DriverManager.getWebDriver(), this);
+        pageUrl = ApplicationURLs.LOGIN_URL;
     }
 
     public void processLoginAndPassword(String login, String password) {
@@ -53,11 +55,19 @@ public class LoginPage extends PageBase {
     public boolean isFailedMessageDisplayed(String failedMessage) {
         Waiter.untilElementsAreVisible( messagesLi );
         logger.info("isFailedMessageDisplayed");
+        String correctedFailedMessage = replaceDoubleSpacesForSingleSpace( failedMessage );
+/*        List<String> messages = messagesLi.stream()
+                .map( li -> li.getText() )
+                .collect(Collectors.toList());
+        String text = replaceDoubleSpacesForSingleSpace( messages.get(0) );*/
         return !messagesLi.stream()
-                .filter( li -> li.getText().equals( failedMessage ) )
+                .filter( li -> replaceDoubleSpacesForSingleSpace( li.getText() ).equals( correctedFailedMessage ) )
                 .map( li -> li.isDisplayed() )
-                .collect(Collectors.toList())
+                .collect( Collectors.toList() )
                 .isEmpty();
     }
 
+    private String replaceDoubleSpacesForSingleSpace( String text ) {
+        return text.replaceAll("\\s+", " ");
+    }
 }
