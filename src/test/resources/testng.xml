@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MyTestSuite">
+    <test name="MyTest">
+        <packages>
+            <!-- Ścieżka do pakietu zawierającego klasy testowe -->
+            <package name="pl.dev4lazy.locator_tests"/>
+        </packages>
+        <classes>
+            <class name="pl.dev4lazy.tests.CheckoutTests"/>
+        </classes>
+    </test>
+</suite>

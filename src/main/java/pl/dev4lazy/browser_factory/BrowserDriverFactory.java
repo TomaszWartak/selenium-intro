@@ -6,25 +6,27 @@ import pl.dev4lazy.web_drivers.ChromeWebDriver;
 import pl.dev4lazy.web_drivers.FirefoxWebDriver;
 import pl.dev4lazy.web_drivers.SafariWebDriver;
 
+import static pl.dev4lazy.browser_factory.BrowserType.CHROME;
+
 public class BrowserDriverFactory {
 
     public static void setBrowserDriver(BrowserType browserType) {
         switch (browserType) {
             case CHROME:
                 DriverManager.initWebDriver(
-                        AppConfig.getInstance().getChromeDriverPath(),
+                        AppConfig.getInstance().getDriverPath( browserType ),
                         new ChromeWebDriver()
                 );
                 break;
             case FIREFOX:
                 DriverManager.initWebDriver(
-                        AppConfig.getInstance().getFireFoxDriverPath(),
+                        AppConfig.getInstance().getDriverPath( browserType ),
                         new FirefoxWebDriver()
                 );
                 break;
             case SAFARI:
                 DriverManager.initWebDriver(
-                        AppConfig.getInstance().getSafariDriverPath(),
+                        AppConfig.getInstance().getDriverPath( browserType ),
                         new SafariWebDriver()
                 );
                 break;
