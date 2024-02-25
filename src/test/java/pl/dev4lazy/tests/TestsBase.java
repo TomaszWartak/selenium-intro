@@ -28,7 +28,9 @@ public class TestsBase {
 
     @BeforeMethod
     public void beforeTest() {
-        BrowserDriverFactory.setBrowserDriver( LocalWebDriverProperties.getLocalBrowser() );
+        // TODO USUń
+        // BrowserDriverFactory.setBrowserDriver( LocalWebDriverProperties.getLocalBrowser() );
+        DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
     }
 

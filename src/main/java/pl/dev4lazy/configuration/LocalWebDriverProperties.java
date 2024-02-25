@@ -5,10 +5,6 @@ import pl.dev4lazy.utils.SystemInfo;
 
 public class LocalWebDriverProperties {
 
-    public static BrowserType getLocalBrowser() {
-        return BrowserType.valueOf(PropertiesContainer.getProperties().getProperty("local.browser"));
-    }
-
     public static String getChromeWebDriverLocation() {
         String property = "";
         switch (SystemInfo.getOSId()) {
