@@ -28,7 +28,7 @@ public class DriverManager {
 
     public static WebDriver getWebDriver() {
         if (driver == null) {
-            driver = new BrowserDriverFactory( TestRunProperties.isRemoteRun() ).getBrowserDriver( TestRunProperties.getBrowserToRun() );
+            driver = new BrowserDriverFactory( ).getBrowserDriver( TestRunProperties.getBrowserToRun() );
         }
         return driver;
     }

@@ -4,6 +4,10 @@ import pl.dev4lazy.browser_factory.BrowserType;
 
 public class TestRunProperties {
 
+    public static String getGridUrl() {
+        return PropertiesContainer.getProperties().getProperty("grid.url");
+    }
+
     public static BrowserType getBrowserToRun() {
         return BrowserType.valueOf( PropertiesContainer.getProperties().getProperty("browser") );
     }
