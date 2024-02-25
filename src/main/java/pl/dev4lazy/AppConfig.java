@@ -6,11 +6,7 @@ import pl.dev4lazy.utils.SystemInfo;
 
 public class AppConfig{
 
-    static final String WIN_CHROME_DRIVER_PATH = "C:\\drivers\\chromedriver\\chromedriver.exe";
-    static final String MAC_CHROME_DRIVER_PATH = "/usr/local/bin/chromedriver";
-    static final String WIN_FIREFOX_DRIVER_PATH = "C:\\drivers\\geckodriver.exe";
-    static final String MAC_FIREFOX_DRIVER_PATH = "/usr/local/bin/geckodriver";
-    static final String MAC_SAFARI_DRIVER_PATH = "/usr/bin/safaridriver";
+    public static final String PROPERTIES_FILE_NAME = "configuration.properties";
 
     private static AppConfig instance;
 

@@ -6,17 +6,17 @@ import pl.dev4lazy.utils.SystemInfo;
 public class LocalWebDriverProperties {
 
     public static BrowserType getLocalBrowser() {
-        return BrowserType.valueOf(PropertiesWrapper.getProperties().getProperty("local.browser"));
+        return BrowserType.valueOf(PropertiesContainer.getProperties().getProperty("local.browser"));
     }
 
     public static String getChromeWebDriverLocation() {
         String property = "";
         switch (SystemInfo.getOSId()) {
             case SystemInfo.MAC_OS_ID:
-                property = PropertiesWrapper.getProperties().getProperty("chrome.driver.location.mac");
+                property = PropertiesContainer.getProperties().getProperty("chrome.driver.location.mac");
                 break;
             case SystemInfo.WIN_OS_ID:
-                property = PropertiesWrapper.getProperties().getProperty("chrome.driver.location.windows");
+                property = PropertiesContainer.getProperties().getProperty("chrome.driver.location.windows");
                 break;
             default: {
                 throw new IllegalStateException("Unsupported OS");
@@ -28,10 +28,10 @@ public class LocalWebDriverProperties {
         String property = "";
         switch (SystemInfo.getOSId()) {
             case SystemInfo.MAC_OS_ID:
-                property = PropertiesWrapper.getProperties().getProperty("firefox.driver.location.mac");
+                property = PropertiesContainer.getProperties().getProperty("firefox.driver.location.mac");
                 break;
             case SystemInfo.WIN_OS_ID:
-                property = PropertiesWrapper.getProperties().getProperty("firefox.driver.location.windows");
+                property = PropertiesContainer.getProperties().getProperty("firefox.driver.location.windows");
                 break;
             default: {
                 throw new IllegalStateException("Unsupported OS");
@@ -44,7 +44,7 @@ public class LocalWebDriverProperties {
         String property = "";
         switch (SystemInfo.getOSId()) {
             case SystemInfo.MAC_OS_ID:
-                property = PropertiesWrapper.getProperties().getProperty("safari.driver.location.mac");
+                property = PropertiesContainer.getProperties().getProperty("safari.driver.location.mac");
                 break;
             default: {
                 throw new IllegalStateException("Unsupported OS");

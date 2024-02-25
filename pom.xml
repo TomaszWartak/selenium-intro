@@ -58,7 +58,10 @@
                 <configuration>
                     <suiteXmlFiles>
                         <!-- Ścieżka do pliku TestNG XML zdefiniowanego dla Twoich testów -->
+<!--
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+-->
+                        <suiteXmlFile>${test_suite}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

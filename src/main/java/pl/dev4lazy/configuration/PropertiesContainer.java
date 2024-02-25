@@ -1,17 +1,17 @@
 package pl.dev4lazy.configuration;
 
 import java.util.Properties;
-public class PropertiesWrapper {
+public class PropertiesContainer {
     //Statyczne pole do przechowywania properties
     private static Properties properties;
     //Konstruktor prywatny potrzebny do posiadania tylko jednej instancji klasy ConfigurationProperties
     //Wzorzec Singleton
-    private PropertiesWrapper() {
+    private PropertiesContainer() {
     }
     //Metoda służy do załadowania obiektu properties do statycznego obiektu typu Properties, dostępnego dla wszystkich
     // wątków
     public static void setProperties(Properties properties) {
-        PropertiesWrapper.properties = properties;
+        PropertiesContainer.properties = properties;
     }
     //Metoda zwraca nam wszystkie załadowane properties, jeśli nie są one null-em
     public static Properties getProperties() {

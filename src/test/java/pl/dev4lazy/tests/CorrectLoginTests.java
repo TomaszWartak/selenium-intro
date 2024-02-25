@@ -14,11 +14,6 @@ public class CorrectLoginTests extends TestsBase {
 
     @Test
     public void asUserLoginUsingValidLoginAndPassword(){
-/*
-        new LandingPage().clickEnterTheStoreLink();
-
-        new TopMenuPage().clickSignInLink();*/
-
         LoginPage loginPage = new LoginPage();
         loginPage.navigateTo();
         loginPage.processLoginAndPassword( CORRECT_LOGIN, CORRECT_PASSWORD );
