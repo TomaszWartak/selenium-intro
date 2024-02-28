@@ -7,43 +7,33 @@ import pl.dev4lazy.web_drivers.WebDriverExtender;
 
 public class DriverManager {
 
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+
+//    private static WebDriver driver;
 
     private DriverManager() {
     }
 
-    // TODO USUń
-/*
-    public static WebDriver getWebDriver1() {
-        if (driver == null) {
-            throw new IllegalStateException(
-                    // TODO tą metodę trzeba usunąć
-                    "DriverManager not initalized. "+
-                    "Use BrowserFactory to initialize it."
-            );
-        }
-        return driver;
-    }
-*/
-
     public static WebDriver getWebDriver() {
-        if (driver == null) {
+        if (webDriverThreadLocal.get() == null) {
+            //Wywołanie metody getBrowser() z klasy BrowserFactory zwraca instancję WebDrivera, który następnie jest
+            // dodana do puli instancji klasy ThreadLocal za pomocą metody set()
+            webDriverThreadLocal.set( new BrowserDriverFactory( ).getBrowserDriver( TestRunProperties.getBrowserToRun() ) );
+        }
+        return webDriverThreadLocal.get();
+        /*if (driver == null) {
             driver = new BrowserDriverFactory( ).getBrowserDriver( TestRunProperties.getBrowserToRun() );
         }
         return driver;
+        */
     }
 
-    //TODO USUń
-    /*public static void initWebDriver( String driverPath, WebDriverExtender webDriverExtender ) {
-        if (driver == null) {
-            System.setProperty( webDriverExtender.getDriverName(), driverPath );
-            driver = webDriverExtender;
-        }
-    }*/
-
     public static void disposeDriver(){
-        driver.close();
+        webDriverThreadLocal.get().close();
+        webDriverThreadLocal.get().quit();
+        webDriverThreadLocal.remove();
+/*        driver.close();
         driver.quit();
-        driver = null;
+        driver = null;*/
     }
 }
