@@ -1,14 +1,14 @@
 package pl.dev4lazy.tests;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import pl.dev4lazy.AppConfig;
 import pl.dev4lazy.browser_factory.BrowserDriverFactory;
+import pl.dev4lazy.browser_factory.BrowserType;
 import pl.dev4lazy.configuration.PropertiesContainer;
 import pl.dev4lazy.configuration.LocalWebDriverProperties;
 import pl.dev4lazy.configuration.PropertiesLoader;
+import pl.dev4lazy.configuration.TestRunProperties;
 import pl.dev4lazy.driver_manager.DriverManager;
 import pl.dev4lazy.driver_manager.DriverUtils;
 
@@ -26,10 +26,10 @@ public class TestsBase {
         PropertiesContainer.setProperties( propertiesFromFile );
     }
 
+    @Parameters("browser")
     @BeforeMethod
-    public void beforeTest() {
-        // TODO USUń
-        // BrowserDriverFactory.setBrowserDriver( LocalWebDriverProperties.getLocalBrowser() );
+    public void beforeTest( @Optional String browser ) {
+        TestRunProperties.setBrowserToRun( browser );
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
     }

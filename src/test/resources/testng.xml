@@ -1,20 +1,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="MyTestSuite" parallel="tests" thread-count="4">
-<!--suite name="MyTestSuite"-->
-    <test name="IncorrectLoginTests">
-<!--            <parameter name="browser" value="FIREFOX"/>-->
-
-        <!--        <packages>
-                    <package name="pl.dev4lazy.locator_tests"/>
-                </packages>-->
+    <test name="IncorrectLoginTests on FireFox">
+        <parameter name="browser" value="FIREFOX"/>
         <classes>
             <class name="pl.dev4lazy.tests.IncorrectLoginTests"/>
         </classes>
     </test>
-    <test name="CorrectLoginTests">
-<!--            <parameter name="browser" value="CHROME"/>-->
-       <classes>
-            <class name="pl.dev4lazy.tests.CorrectLoginTests"/>
+    <test name="IncorrectLoginTests on Chrome">
+        <parameter name="browser" value="CHROME"/>
+        <classes>
+            <class name="pl.dev4lazy.tests.IncorrectLoginTests"/>
+        </classes>
+    </test>
+    <test name="IncorrectLoginTests on Edge">
+        <parameter name="browser" value="EDGE"/>
+        <classes>
+            <class name="pl.dev4lazy.tests.IncorrectLoginTests"/>
         </classes>
     </test>
 </suite>

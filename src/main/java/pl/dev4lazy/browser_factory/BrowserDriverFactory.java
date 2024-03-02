@@ -2,6 +2,7 @@ package pl.dev4lazy.browser_factory;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -10,10 +11,7 @@ import org.openqa.selenium.safari.SafariOptions;
 import pl.dev4lazy.AppConfig;
 import pl.dev4lazy.configuration.TestRunProperties;
 import pl.dev4lazy.driver_manager.DriverManager;
-import pl.dev4lazy.web_drivers.ChromeWebDriver;
-import pl.dev4lazy.web_drivers.FirefoxWebDriver;
-import pl.dev4lazy.web_drivers.SafariWebDriver;
-import pl.dev4lazy.web_drivers.WebDriverExtender;
+import pl.dev4lazy.web_drivers.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -30,42 +28,8 @@ Cechy jakie musi wspierać nowa implementacja klasy BrowserFactory to:
  */
 public class BrowserDriverFactory {
 
-    // TODO usuń
-/*
-    public BrowserDriverFactory( boolean isRemote ) {
-
-    }
-*/
-
-    // TODO usuń
-    /*public static void setBrowserDriver(BrowserType browserType) {
-        switch (browserType) {
-            case CHROME:
-                DriverManager.initWebDriver(
-                        AppConfig.getInstance().getDriverPath( browserType ),
-                        new ChromeWebDriver()
-                );
-                break;
-            case FIREFOX:
-                DriverManager.initWebDriver(
-                        AppConfig.getInstance().getDriverPath( browserType ),
-                        new FirefoxWebDriver()
-                );
-                break;
-            case SAFARI:
-                DriverManager.initWebDriver(
-                        AppConfig.getInstance().getDriverPath( browserType ),
-                        new SafariWebDriver()
-                );
-                break;
-            default:
-                throw new IllegalStateException("Unknown browser type! Please check your configuration");
-        }
-    }
-*/
     public WebDriver getBrowserDriver( BrowserType browserType ) {
         boolean remoteRun = TestRunProperties.isRemoteRun();
-        WebDriverExtender driver;
         if (remoteRun) {
             //Tworzymy obiekt desiredCapabilities, który jest wymagany do wyboru przeglądarki
             DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -73,37 +37,44 @@ public class BrowserDriverFactory {
                 case CHROME:
                     ChromeOptions chromeOptions = new ChromeOptions();
                     desiredCapabilities.merge( chromeOptions );
-                    return getRemoteWebDriver( desiredCapabilities );
+                    break;
                 case FIREFOX:
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
                     desiredCapabilities.merge( firefoxOptions );
-                    return getRemoteWebDriver( desiredCapabilities );
+                    break;
                 case SAFARI:
                     SafariOptions safariOptions = new SafariOptions();
                     desiredCapabilities.merge( safariOptions);
-                    return getRemoteWebDriver( desiredCapabilities );
+                    break;
+                case EDGE:
+                    EdgeOptions edgeOptions = new EdgeOptions();
+                    desiredCapabilities.merge( edgeOptions);
+                    break;
                 default:
                     throw new IllegalStateException( "Unsupported browser...");
             }
+            return getRemoteWebDriver( desiredCapabilities );
         } else {
+            WebDriverExtender driver;
             switch (browserType) {
                 case CHROME:
                     driver = new ChromeWebDriver();
-                    System.setProperty( driver.getDriverName(), AppConfig.getInstance().getDriverPath( browserType ) );
                     break;
                 case FIREFOX:
                     driver = new FirefoxWebDriver();
-                    System.setProperty( driver.getDriverName(), AppConfig.getInstance().getDriverPath( browserType ) );
                     break;
                 case SAFARI:
                     driver = new SafariWebDriver();
-                    System.setProperty( driver.getDriverName(), AppConfig.getInstance().getDriverPath( browserType ) );
+                    break;
+                case EDGE:
+                    driver = new EdgeWebDriver();
                     break;
                 default:
                     throw new IllegalStateException("Unknown browser type! Please check your configuration");
             }
+            System.setProperty( driver.getDriverName(), AppConfig.getInstance().getDriverPath( browserType ) );
+            return driver;
         }
-        return driver;
     }
 
     private WebDriver getRemoteWebDriver(DesiredCapabilities desiredCapabilities) {

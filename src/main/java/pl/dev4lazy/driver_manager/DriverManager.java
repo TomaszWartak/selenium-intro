@@ -9,8 +9,6 @@ public class DriverManager {
 
     private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
 
-//    private static WebDriver driver;
-
     private DriverManager() {
     }
 
@@ -21,19 +19,11 @@ public class DriverManager {
             webDriverThreadLocal.set( new BrowserDriverFactory( ).getBrowserDriver( TestRunProperties.getBrowserToRun() ) );
         }
         return webDriverThreadLocal.get();
-        /*if (driver == null) {
-            driver = new BrowserDriverFactory( ).getBrowserDriver( TestRunProperties.getBrowserToRun() );
-        }
-        return driver;
-        */
     }
 
     public static void disposeDriver(){
         webDriverThreadLocal.get().close();
         webDriverThreadLocal.get().quit();
         webDriverThreadLocal.remove();
-/*        driver.close();
-        driver.quit();
-        driver = null;*/
     }
 }

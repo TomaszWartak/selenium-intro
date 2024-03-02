@@ -3,7 +3,8 @@ package pl.dev4lazy.browser_factory;
 public enum BrowserType {
     FIREFOX("firefox"),
     CHROME("chrome"),
-    SAFARI("Safari");
+    EDGE("edge"),
+    SAFARI("safari");
 
     private final String browser;
 

@@ -26,6 +26,8 @@ public class AppConfig{
                 return LocalWebDriverProperties.getChromeWebDriverLocation();
             case FIREFOX:
                 return LocalWebDriverProperties.getFirefoxWebDriverLocation();
+            case EDGE:
+                return LocalWebDriverProperties.getEdgeWebDriverLocation();
             case SAFARI:
                 return LocalWebDriverProperties.getSafariWebDriverLocation();
             default: {

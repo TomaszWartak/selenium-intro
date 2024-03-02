@@ -36,6 +36,22 @@ public class LocalWebDriverProperties {
         return property;
     }
 
+    public static String getEdgeWebDriverLocation() {
+        String property = "";
+        switch (SystemInfo.getOSId()) {
+            case SystemInfo.MAC_OS_ID:
+                property = PropertiesContainer.getProperties().getProperty("edge.driver.location.mac");
+                break;
+            case SystemInfo.WIN_OS_ID:
+                property = PropertiesContainer.getProperties().getProperty("edge.driver.location.windows");
+                break;
+            default: {
+                throw new IllegalStateException("Unsupported OS");
+            }
+        }
+        return property;
+    }
+
     public static String getSafariWebDriverLocation() {
         String property = "";
         switch (SystemInfo.getOSId()) {

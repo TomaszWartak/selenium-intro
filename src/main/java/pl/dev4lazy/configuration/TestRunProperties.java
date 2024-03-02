@@ -12,6 +12,12 @@ public class TestRunProperties {
         return BrowserType.valueOf( PropertiesContainer.getProperties().getProperty("browser") );
     }
 
+    public static void setBrowserToRun( String browser ) {
+        if (browser!=null) {
+            PropertiesContainer.getProperties().setProperty("browser", browser);
+        }
+    }
+
     public static boolean isRemoteRun(){
         return Boolean.parseBoolean( PropertiesContainer.getProperties().getProperty("remoteRun") );
     }
