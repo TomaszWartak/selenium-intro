@@ -4,11 +4,11 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 public class EdgeWebDriver extends EdgeDriver implements WebDriverExtender {
 
-    public final String driverName = "webdriver.edge.driver";
+    public static final String DRIVER_NAME = "webdriver.edge.driver";
 
     @Override
     public String getDriverName() {
-        return driverName;
+        return DRIVER_NAME;
     }
 
 }

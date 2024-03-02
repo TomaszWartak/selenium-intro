@@ -4,11 +4,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ChromeWebDriver extends ChromeDriver implements WebDriverExtender {
 
-    public final String driverName = "webdriver.chrome.driver";
+    public static final String DRIVER_NAME = "webdriver.chrome.driver";
 
     @Override
     public String getDriverName() {
-        return driverName;
+        return DRIVER_NAME;
     }
 
 }

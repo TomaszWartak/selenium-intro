@@ -4,6 +4,10 @@ import pl.dev4lazy.browser_factory.BrowserType;
 
 public class TestRunProperties {
 
+    private TestRunProperties() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String getGridUrl() {
         return PropertiesContainer.getProperties().getProperty("grid.url");
     }

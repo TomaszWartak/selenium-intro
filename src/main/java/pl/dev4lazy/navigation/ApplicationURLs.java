@@ -16,4 +16,8 @@ public class ApplicationURLs {
             = APPLICATION_URL + "actions/Catalog.action?viewCategory=&categoryId=REPTILES";
     public static final String BIRDS_CATEGORY_URL
             = APPLICATION_URL + "actions/Catalog.action?viewCategory=&categoryId=BIRDS";
+    private ApplicationURLs() {
+        throw new IllegalStateException("Utility class");
+    }
+
 }

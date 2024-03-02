@@ -4,11 +4,11 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class SafariWebDriver extends SafariDriver implements WebDriverExtender {
 
-    public final String driverName = "webdriver.safari.driver";
+    public static final String DRIVER_NAME = "webdriver.safari.driver";
 
     @Override
     public String getDriverName() {
-        return driverName;
+        return DRIVER_NAME;
     }
 
     @Override

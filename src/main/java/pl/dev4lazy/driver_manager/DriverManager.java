@@ -3,7 +3,6 @@ package pl.dev4lazy.driver_manager;
 import org.openqa.selenium.WebDriver;
 import pl.dev4lazy.browser_factory.BrowserDriverFactory;
 import pl.dev4lazy.configuration.TestRunProperties;
-import pl.dev4lazy.web_drivers.WebDriverExtender;
 
 public class DriverManager {
 

@@ -4,7 +4,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class FirefoxWebDriver extends FirefoxDriver implements WebDriverExtender {
 
-    public final String driverName = "webdriver.gecko.driver";
+    public static final String DRIVER_NAME = "webdriver.gecko.driver";
 
     @Override
     public void quit() {
@@ -13,7 +13,7 @@ public class FirefoxWebDriver extends FirefoxDriver implements WebDriverExtender
 
     @Override
     public String getDriverName() {
-        return driverName;
+        return DRIVER_NAME;
     }
 
 }

@@ -1,9 +1,13 @@
 package pl.dev4lazy.configuration;
 
-import pl.dev4lazy.browser_factory.BrowserType;
 import pl.dev4lazy.utils.SystemInfo;
 
 public class LocalWebDriverProperties {
+
+    private final static String UNSUPPORTED_OS_MSG = "Unsupported OS";
+    private LocalWebDriverProperties() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static String getChromeWebDriverLocation() {
         String property = "";
@@ -15,7 +19,7 @@ public class LocalWebDriverProperties {
                 property = PropertiesContainer.getProperties().getProperty("chrome.driver.location.windows");
                 break;
             default: {
-                throw new IllegalStateException("Unsupported OS");
+                throw new IllegalStateException(UNSUPPORTED_OS_MSG );
             }
         }
         return property;    }
@@ -30,7 +34,7 @@ public class LocalWebDriverProperties {
                 property = PropertiesContainer.getProperties().getProperty("firefox.driver.location.windows");
                 break;
             default: {
-                throw new IllegalStateException("Unsupported OS");
+                throw new IllegalStateException(UNSUPPORTED_OS_MSG );
             }
         }
         return property;
@@ -46,7 +50,7 @@ public class LocalWebDriverProperties {
                 property = PropertiesContainer.getProperties().getProperty("edge.driver.location.windows");
                 break;
             default: {
-                throw new IllegalStateException("Unsupported OS");
+                throw new IllegalStateException(UNSUPPORTED_OS_MSG );
             }
         }
         return property;
@@ -59,7 +63,7 @@ public class LocalWebDriverProperties {
                 property = PropertiesContainer.getProperties().getProperty("safari.driver.location.mac");
                 break;
             default: {
-                throw new IllegalStateException("Unsupported OS");
+                throw new IllegalStateException(UNSUPPORTED_OS_MSG );
             }
         }
         return property;
