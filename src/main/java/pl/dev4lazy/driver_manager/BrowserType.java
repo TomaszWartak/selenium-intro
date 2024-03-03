@@ -1,4 +1,4 @@
-package pl.dev4lazy.browser_factory;
+package pl.dev4lazy.driver_manager;
 
 public enum BrowserType {
     FIREFOX("firefox"),

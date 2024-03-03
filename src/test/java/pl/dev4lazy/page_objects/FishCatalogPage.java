@@ -18,8 +18,8 @@ public class FishCatalogPage extends PageBase {
     }
 
     public void clickAngelFishIdLink() {
+        logger.info("clickAngelFishIdLink");
         Waiter.untilElementIsClickable( angelFishIdLink );
         angelFishIdLink.click();
-        logger.info("clickAngelFishIdLink");
     }
 }

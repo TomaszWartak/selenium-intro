@@ -16,8 +16,8 @@ public class FooterPage extends PageBase {
     }
 
     public boolean isBannerAfterLoginDisplayed() {
-        Waiter.untilElementIsVisible( bannerAfterLoginLogo );
         logger.info("isBannerAfterLoginDisplayed");
+        Waiter.untilElementIsVisible( bannerAfterLoginLogo );
         return bannerAfterLoginLogo.isDisplayed();
     }
 

@@ -8,7 +8,8 @@ public class PageBase {
 
     protected String pageUrl = "";
 
-    protected Logger logger = LogManager.getRootLogger();
+//  todo      protected Logger logger = LogManager.getRootLogger();
+    protected Logger logger = LogManager.getLogger( this.getClass() );
 
     public void navigateTo() {
         DriverUtils.navigateToPage( pageUrl );

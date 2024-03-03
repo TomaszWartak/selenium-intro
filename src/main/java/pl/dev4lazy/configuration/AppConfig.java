@@ -1,7 +1,6 @@
-package pl.dev4lazy;
+package pl.dev4lazy.configuration;
 
-import pl.dev4lazy.browser_factory.BrowserType;
-import pl.dev4lazy.configuration.LocalWebDriverProperties;
+import pl.dev4lazy.driver_manager.BrowserType;
 
 public class AppConfig{
 

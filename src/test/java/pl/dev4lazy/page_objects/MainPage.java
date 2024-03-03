@@ -33,38 +33,38 @@ public class MainPage extends PageBase {
     }
 
     public void clickSignInLink() {
+        logger.info("clickSignInLink");
         Waiter.untilElementIsClickable( signInLink );
         signInLink.click();
-        logger.info("clickSignInLink");
     }
 
     public void clickFishLinkFromTopMenu() {
+        logger.info("clickFishLinkFromTopMenu");
         Waiter.untilElementIsClickable( fishLink );
         fishLink.click();
-        logger.info("clickFishLinkFromTopMenu");
     }
 
     public void clickDogsLinkFromTopMenu() {
+        logger.info("clickDogsLinkFromTopMenu");
         Waiter.untilElementIsClickable( dogsLink );
         dogsLink.click();
-        logger.info("clickDogsLinkFromTopMenu");
     }
 
     public void clickCatsLinkFromTopMenu() {
+        logger.info("clickCatsLinkFromTopMenu");
         Waiter.untilElementIsClickable( catsLink );
         catsLink.click();
-        logger.info("clickCatsLinkFromTopMenu");
     }
 
     public void clickReptilesLinkFromTopMenu() {
+        logger.info("clickReptilesLinkFromTopMenu");
         Waiter.untilElementIsClickable( reptilesLink );
         reptilesLink.click();
-        logger.info("clickReptilesLinkFromTopMenu");
     }
 
     public void clickBirdsLinkFromTopMenu() {
+        logger.info("clickBirdsLinkFromTopMenu");
         Waiter.untilElementIsClickable( birdsLink );
         birdsLink.click();
-        logger.info("clickBirdsLinkFromTopMenu");
     }
 }

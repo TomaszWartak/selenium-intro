@@ -18,8 +18,8 @@ public class LandingPage extends PageBase {
     }
 
     public void clickEnterTheStoreLink() {
+        logger.info("clickEnterTheStoreLink");
         Waiter.untilElementIsClickable( enterTheStoreLink );
         enterTheStoreLink.click();
-        logger.info("clickEnterTheStoreLink");
     }
 }

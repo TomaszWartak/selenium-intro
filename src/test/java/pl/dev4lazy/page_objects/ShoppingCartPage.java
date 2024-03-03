@@ -16,9 +16,9 @@ public class ShoppingCartPage extends PageBase {
     }
 
     public void clickProceedToCheckoutLink() {
+        logger.info("clickProceedToCheckoutLink");
         Waiter.untilElementIsClickable( proceedToCheckoutLink );
         proceedToCheckoutLink.click();
-        logger.info("clickProceedToCheckoutLink");
     }
 
 }

@@ -1,4 +1,4 @@
-package pl.dev4lazy.browser_factory;
+package pl.dev4lazy.driver_manager;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariOptions;
-import pl.dev4lazy.AppConfig;
+import pl.dev4lazy.configuration.AppConfig;
 import pl.dev4lazy.configuration.TestRunProperties;
 import pl.dev4lazy.web_drivers.*;
 

@@ -16,8 +16,8 @@ public class AngelFishCatalogPage extends PageBase {
     }
 
     public void clickSmallAngelFishAddToCartLink() {
+        logger.info("clickSmallAngelFishAddToCartLink");
         Waiter.untilElementIsClickable( smallAngelFishAddToCartLink );
         smallAngelFishAddToCartLink.click();
-        logger.info("clickSmallAngelFishAddToCartLink");
     }
 }

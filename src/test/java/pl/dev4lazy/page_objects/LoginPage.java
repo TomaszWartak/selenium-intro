@@ -33,33 +33,29 @@ public class LoginPage extends PageBase {
     }
 
     public void typeInLoginInput( String login ) {
+        logger.info("typeInLoginInput");
         Waiter.untilElementIsVisible( userNameInput );
         userNameInput.clear();
         userNameInput.sendKeys(login);
-        logger.info("typeInLoginInput");
     }
 
     public void typeInPasswordInput( String password ) {
+        logger.info("typeInPasswordInput");
         Waiter.untilElementIsVisible( passwordInput );
         passwordInput.clear();
         passwordInput.sendKeys(password);
-        logger.info("typeInPasswordInput");
     }
 
     public void clickSignOnInput() {
+        logger.info("clickSignOnInput");
         Waiter.untilElementIsClickable( signOnInput );
         signOnInput.click();
-        logger.info("clickSignOnInput");
     }
 
     public boolean isFailedMessageDisplayed(String failedMessage) {
-        Waiter.untilElementsAreVisible( messagesLi );
         logger.info("isFailedMessageDisplayed");
+        Waiter.untilElementsAreVisible( messagesLi );
         String correctedFailedMessage = replaceDoubleSpacesForSingleSpace( failedMessage );
-/*        List<String> messages = messagesLi.stream()
-                .map( li -> li.getText() )
-                .collect(Collectors.toList());
-        String text = replaceDoubleSpacesForSingleSpace( messages.get(0) );*/
         return !messagesLi.stream()
                 .filter( li -> replaceDoubleSpacesForSingleSpace( li.getText() ).equals( correctedFailedMessage ) )
                 .map( li -> li.isDisplayed() )
