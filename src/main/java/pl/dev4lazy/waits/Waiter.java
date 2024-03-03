@@ -10,6 +10,9 @@ import java.util.List;
 
 public class Waiter {
 
+    private Waiter() {
+        throw new IllegalStateException("Utility class");
+    }
     private static WebDriverWait getWebDriverWait() {
         return new WebDriverWait( DriverManager.getWebDriver(), Duration.ofSeconds(10) );
     }
