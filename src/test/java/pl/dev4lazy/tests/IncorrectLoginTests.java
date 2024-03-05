@@ -16,8 +16,17 @@ public class IncorrectLoginTests extends TestsBase {
         LoginPage loginPage = new LoginPage();
         loginPage.navigateTo();
         loginPage.processLoginAndPassword( WRONG_LOGIN, WRONG_PASSWORD );
+//      todo usuń uzycie asercji w page objecie   loginPage.assertThatWarningIsDisplayed( "Invalid username or password. Signon failed." );
+         assertTrue( loginPage.isFailedMessageDisplayed( "Invalid username or password. Signon failed." ) );
+    }
+    @Test
+    public void asUserTryToLoginWithIncorrectLoginAndPassword_negative_test_verification() {
 
-        assertTrue( loginPage.isFailedMessageDisplayed( "Invalid username or password. Signon failed." ) );
+        LoginPage loginPage = new LoginPage();
+        loginPage.navigateTo();
+        loginPage.processLoginAndPassword( WRONG_LOGIN, WRONG_PASSWORD );
+//      todo usuń uzycie asercji w page objecie   loginPage.assertThatWarningIsDisplayed( "XXX" );
+         assertTrue( !loginPage.isFailedMessageDisplayed( "XXX" ) );
     }
 
 }

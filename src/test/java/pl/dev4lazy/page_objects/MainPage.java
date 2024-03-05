@@ -7,7 +7,7 @@ import pl.dev4lazy.driver_manager.DriverManager;
 import pl.dev4lazy.navigation.ApplicationURLs;
 import pl.dev4lazy.waits.Waiter;
 
-public class MainPage extends PageBase {
+public class MainPage extends BasePage {
 
     @FindBy( linkText = "Sign In")
     WebElement signInLink;
@@ -28,42 +28,42 @@ public class MainPage extends PageBase {
     WebElement birdsLink;
 
     public MainPage() {
-        PageFactory.initElements( DriverManager.getWebDriver(), this);
+        super();
         pageUrl = ApplicationURLs.TOP_MENU_URL;
     }
 
     public void clickSignInLink() {
-        logger.info("clickSignInLink");
+        logger.info( System.lineSeparator()+"clickSignInLink");
         Waiter.untilElementIsClickable( signInLink );
         signInLink.click();
     }
 
     public void clickFishLinkFromTopMenu() {
-        logger.info("clickFishLinkFromTopMenu");
+        logger.info( System.lineSeparator()+"clickFishLinkFromTopMenu");
         Waiter.untilElementIsClickable( fishLink );
         fishLink.click();
     }
 
     public void clickDogsLinkFromTopMenu() {
-        logger.info("clickDogsLinkFromTopMenu");
+        logger.info( System.lineSeparator()+"clickDogsLinkFromTopMenu");
         Waiter.untilElementIsClickable( dogsLink );
         dogsLink.click();
     }
 
     public void clickCatsLinkFromTopMenu() {
-        logger.info("clickCatsLinkFromTopMenu");
+        logger.info( System.lineSeparator()+"clickCatsLinkFromTopMenu");
         Waiter.untilElementIsClickable( catsLink );
         catsLink.click();
     }
 
     public void clickReptilesLinkFromTopMenu() {
-        logger.info("clickReptilesLinkFromTopMenu");
+        logger.info( System.lineSeparator()+"clickReptilesLinkFromTopMenu");
         Waiter.untilElementIsClickable( reptilesLink );
         reptilesLink.click();
     }
 
     public void clickBirdsLinkFromTopMenu() {
-        logger.info("clickBirdsLinkFromTopMenu");
+        logger.info( System.lineSeparator()+"clickBirdsLinkFromTopMenu");
         Waiter.untilElementIsClickable( birdsLink );
         birdsLink.click();
     }

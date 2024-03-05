@@ -6,17 +6,18 @@ import org.openqa.selenium.support.PageFactory;
 import pl.dev4lazy.driver_manager.DriverManager;
 import pl.dev4lazy.waits.Waiter;
 
-public class FooterPage extends PageBase {
+public class FooterPage extends BasePage {
 
     @FindBy( id = "Banner")
     private WebElement bannerAfterLoginLogo;
 
     public FooterPage() {
-        PageFactory.initElements( DriverManager.getWebDriver(), this);
+        super();
+        // todo ??? tutaj brakuje pageUrl = ApplicationURLs.???
     }
 
     public boolean isBannerAfterLoginDisplayed() {
-        logger.info("isBannerAfterLoginDisplayed");
+        logger.info( System.lineSeparator()+"isBannerAfterLoginDisplayed");
         Waiter.untilElementIsVisible( bannerAfterLoginLogo );
         return bannerAfterLoginLogo.isDisplayed();
     }

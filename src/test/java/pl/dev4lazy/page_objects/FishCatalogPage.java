@@ -7,18 +7,18 @@ import pl.dev4lazy.driver_manager.DriverManager;
 import pl.dev4lazy.navigation.ApplicationURLs;
 import pl.dev4lazy.waits.Waiter;
 
-public class FishCatalogPage extends PageBase {
+public class FishCatalogPage extends BasePage {
 
     @FindBy( linkText="FI-SW-01")
     private WebElement angelFishIdLink;
 
     public FishCatalogPage() {
-        PageFactory.initElements( DriverManager.getWebDriver(), this);
+        super();
         pageUrl = ApplicationURLs.FISH_CATEGORY_URL;
     }
 
     public void clickAngelFishIdLink() {
-        logger.info("clickAngelFishIdLink");
+        logger.info( System.lineSeparator()+"clickAngelFishIdLink");
         Waiter.untilElementIsClickable( angelFishIdLink );
         angelFishIdLink.click();
     }

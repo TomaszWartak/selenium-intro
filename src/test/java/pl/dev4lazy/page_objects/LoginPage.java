@@ -10,7 +10,7 @@ import pl.dev4lazy.waits.Waiter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LoginPage extends PageBase {
+public class LoginPage extends BasePage {
 
     @FindBy( name = "username")
     private WebElement userNameInput;
@@ -22,7 +22,7 @@ public class LoginPage extends PageBase {
     private List<WebElement> messagesLi;
 
     public LoginPage() {
-        PageFactory.initElements( DriverManager.getWebDriver(), this);
+        super();
         pageUrl = ApplicationURLs.LOGIN_URL;
     }
 
@@ -33,27 +33,27 @@ public class LoginPage extends PageBase {
     }
 
     public void typeInLoginInput( String login ) {
-        logger.info("typeInLoginInput");
+        logger.info( System.lineSeparator()+"typeInLoginInput");
         Waiter.untilElementIsVisible( userNameInput );
         userNameInput.clear();
         userNameInput.sendKeys(login);
     }
 
     public void typeInPasswordInput( String password ) {
-        logger.info("typeInPasswordInput");
+        logger.info( System.lineSeparator()+"typeInPasswordInput");
         Waiter.untilElementIsVisible( passwordInput );
         passwordInput.clear();
         passwordInput.sendKeys(password);
     }
 
     public void clickSignOnInput() {
-        logger.info("clickSignOnInput");
+        logger.info( System.lineSeparator()+"clickSignOnInput");
         Waiter.untilElementIsClickable( signOnInput );
         signOnInput.click();
     }
 
     public boolean isFailedMessageDisplayed(String failedMessage) {
-        logger.info("isFailedMessageDisplayed");
+        logger.info( System.lineSeparator()+"isFailedMessageDisplayed: "+failedMessage );
         Waiter.untilElementsAreVisible( messagesLi );
         String correctedFailedMessage = replaceDoubleSpacesForSingleSpace( failedMessage );
         return !messagesLi.stream()
@@ -66,4 +66,12 @@ public class LoginPage extends PageBase {
     private String replaceDoubleSpacesForSingleSpace( String text ) {
         return text.replaceAll("\\s+", " ");
     }
+
+/* todo (uzycie własnych asercji z logowaniem) na razie zostaje, ale do usunięcia
+    public void assertThatWarningIsDisplayed(String failedMessage) {
+        logger.info( System.lineSeparator()+"assertThatWarningIsDisplayed: "+failedMessage );
+        Waiter.untilElementsAreVisible( messagesLi );
+        AssertWebElements.assertThat( messagesLi ).areDisplayed().haveText( failedMessage );
+    }*/
+
 }

@@ -7,18 +7,18 @@ import pl.dev4lazy.driver_manager.DriverManager;
 import pl.dev4lazy.navigation.ApplicationURLs;
 import pl.dev4lazy.waits.Waiter;
 
-public class LandingPage extends PageBase {
+public class LandingPage extends BasePage {
 
     @FindBy(linkText = "Enter the Store")
     private WebElement enterTheStoreLink;
 
     public LandingPage() {
-        PageFactory.initElements( DriverManager.getWebDriver(), this);
+        super();
         pageUrl = ApplicationURLs.APPLICATION_URL;
     }
 
     public void clickEnterTheStoreLink() {
-        logger.info("clickEnterTheStoreLink");
+        logger.info( System.lineSeparator()+"clickEnterTheStoreLink");
         Waiter.untilElementIsClickable( enterTheStoreLink );
         enterTheStoreLink.click();
     }
